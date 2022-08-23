@@ -15,7 +15,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: IJwtTokenData) {
-    console.log(payload);
     if (!payload || !payload.email || !payload.userId) {
       throw new HttpException('Invalid token', HttpStatus.FORBIDDEN);
     }
