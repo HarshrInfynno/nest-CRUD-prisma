@@ -20,7 +20,6 @@ export class UserService {
       },
     });
     if (user) {
-      console.log(user);
       throw new HttpException('User already exist.', HttpStatus.BAD_REQUEST);
     }
     if (data.password) {
