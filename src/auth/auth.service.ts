@@ -10,7 +10,6 @@ import {
   AuthResponseType,
   ForgotPasswordDto,
   IJwtTokenData,
-  ResetPasswordDto,
 } from './dto/auth.dto';
 
 @Injectable()
@@ -123,7 +122,7 @@ export class AuthService {
           HttpStatus.BAD_REQUEST,
         );
       }
-      const updatePassword = await this.userService.update({
+      await this.userService.update({
         data: {
           password,
         },

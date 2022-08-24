@@ -14,8 +14,8 @@ import { MailService } from './mail.service';
             host: 'smtp.gmail.com',
             secure: false,
             auth: {
-              user: 'support@iheartpsychics.com',
-              pass: 'mqvxljsvojhaifun',
+              user: '<>user-mail<>',
+              pass: '<>user-mail-password<>',
             },
           },
           defaults: {
