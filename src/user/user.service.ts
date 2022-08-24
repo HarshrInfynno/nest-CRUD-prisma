@@ -120,20 +120,23 @@ export class UserService {
     data: UpdateUserDto;
     where: Prisma.UserWhereUniqueInput;
   }) {
-    const { where } = params;
+    const { where, data } = params;
     const user = await this.prisma.user.findUnique({ where });
     if (!user) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
+    if (data.password) {
+      data.password = await hashText(data.password as string);
+    }
     const updatedUser = await this.prisma.user.update(params);
 
-    return {
-      id: updatedUser.id,
-      email: updatedUser.email,
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
-      isActive: updatedUser.isActive,
-    };
+    // return {
+    //   id: updatedUser.id,
+    //   email: updatedUser.email,
+    //   firstName: updatedUser.firstName,
+    //   lastName: updatedUser.lastName,
+    //   isActive: updatedUser.isActive,
+    // };
   }
 
   async delete(where: Prisma.UserWhereUniqueInput) {
