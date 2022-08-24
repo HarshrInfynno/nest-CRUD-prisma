@@ -130,13 +130,13 @@ export class UserService {
     }
     const updatedUser = await this.prisma.user.update(params);
 
-    // return {
-    //   id: updatedUser.id,
-    //   email: updatedUser.email,
-    //   firstName: updatedUser.firstName,
-    //   lastName: updatedUser.lastName,
-    //   isActive: updatedUser.isActive,
-    // };
+    return {
+      id: updatedUser.id,
+      email: updatedUser.email,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      isActive: updatedUser.isActive,
+    };
   }
 
   async delete(where: Prisma.UserWhereUniqueInput) {
